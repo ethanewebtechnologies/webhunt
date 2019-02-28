@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}WEBHUNT | YOUR SEO DOCTOR{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1>SUCCESS</h1>
+        <p>CONTACT CSV UPLOADED SUCCESSFULLY</p> 
+        <p>
+            <a href="{% url 'upload_contact' %}">Go back to form</a>
+        </p>
+    </div>
+{% endblock %}

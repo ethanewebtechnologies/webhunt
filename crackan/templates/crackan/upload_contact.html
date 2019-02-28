@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}WEBHUNT | YOUR SEO DOCTOR{% endblock %}
+
+{% block content %}
+    {% if 'error' in request.session %}
+        {% if request.session.error == True %}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Empty Value Passed
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="jumbotron text-center">
+        <h1>CONTACT CSV UPLOAD</h1>
+        <p>On Submit it may take some time to update. Be Patience!</p> 
+        <a href="{% url 'demo_download' 'demo.csv' %}" target="_blank"> Download Demo CSV </a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                <h5 class="card-title text-center">Upload Contact CSV</h5>
+                <form method="post" action="upload" class="form-signin" enctype="multipart/form-data" data-parsley-validate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}
